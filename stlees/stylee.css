@@ -1,0 +1,166 @@
+*,
+*::after,
+*::before{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+}
+.main{
+    width:100vw;
+    height:100vh;
+    display:grid;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    align-content: center;
+    position: relative;
+    cursor: pointer;
+    grid-template-columns: repeat(3,auto);
+
+}
+.cell{
+    width: 70px;
+    height: 70px;
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+}
+
+.cell:first-child,
+.cell:nth-child(2),
+.cell:nth-child(3){
+    border-top: none;
+}
+
+.cell:last-child,
+.cell:nth-child(7),
+.cell:nth-child(8){
+    border-bottom: none;
+}
+
+.cell:nth-child(3n+1){
+    border-left: none;
+}
+
+.cell:nth-child(3n){
+    border-right: none;
+}
+
+
+.cell.x,
+.cell.circle{
+    cursor: not-allowed;
+}
+
+
+.cell.x::before,
+.cell.x::after{
+    background-color: black;
+}
+
+
+.cell.circle::before{
+    background-color: black;
+}
+
+.cell.circle::after{
+    background-color: white;
+}
+
+/*hover gray color*/
+
+.main.x.cell:not(.x):not(.circle):hover::before,
+.main.x.cell:not(.x):not(.circle):hover::after,
+.main.circle.cell:not(.x):not(.circle):hover::before{
+    background-color: red;
+}
+/**/
+/*for-x*/
+.cell.x::before,
+.cell.x::after,
+.main.x.cell:not(.x):not(.circle):hover::after,
+.main.x.cell:not(.x):not(.circle):hover::before{
+    content:"";
+    position:absolute;
+    width:15px;
+    height:60px;
+}
+
+.cell.x::before,
+.main.x.cell:not(.x):not(.circle):hover:before{
+    transform: rotate(45deg);
+}
+
+.cell.x::after,
+.main.x.cell:not(.x):not(.circle):hover:after{
+    transform: rotate(-45deg);
+}
+/*for-circle*/
+
+.cell.circle::before,
+.cell.circle::after,
+.main.circle.cell:not(.x):not(.circle):hover::after,
+.main.circle.cell:not(.x):not(.circle):hover::before{
+     content:""; 
+    position:absolute;
+    border-radius: 50%;
+}
+
+.cell.circle::before,
+.main.circle .cell:not(.x):not(.circle):hover:before{
+    width:60px;
+    height: 60px;
+}
+
+.cell.circle::after,
+.main.circle .cell:not(.x):not(.circle):hover:after{
+    width:50px;
+    height: 50px;
+    background-color: white;
+}
+
+.winning-message{
+    display: none;
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background-color: rgba(0,0,0,0.856);
+    justify-content: center;
+    align-items: center;
+    color:white;
+    font-size: 5rem;
+    flex-direction: column;
+}
+
+.button{
+    font-size: 3rem;
+    background-color: red;
+    border:1px solid black;
+    padding: 10px 20px;
+}
+.button:hover{
+    background-color: black;
+    background-color: white;
+    color: white;
+}
+
+.winning-message.show{
+    display:flex;
+}
+
+
+
+
+
+
+
+
+
+
